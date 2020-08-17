@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import FacebookAuthorize from './fbAuthorize.js'
+
 
 const LoginContainer = (props) => {
   const [name, setName] = useState('');
@@ -11,18 +13,30 @@ const LoginContainer = (props) => {
         value='Update'
         onSubmit={(e) => {
           e.preventDefault();
-          props.setUsername(name);
+          props.setUsername(
+            name
+          ); /* On submit, update the username state in App */
         }}
       >
         <div>
           <label>User:</label>
-          <input type='text' onChange={(e) => setName(e.target.value)} />
+          <input
+            type='text'
+            onChange={(e) =>
+              setName(e.target.value)
+            } /* When user enters password, update the name state above */
+          />
         </div>
         <div>
           <label>Password:</label>
           <input
             type='password'
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={
+              (e) =>
+                setPassword(
+                  e.target.value
+                ) /* When user enters password, update the name state above */
+            }
           />
         </div>
         <br></br>
@@ -30,6 +44,7 @@ const LoginContainer = (props) => {
           <input className='myButton' type='submit' />
         </center>
       </form>
+      <FacebookAuthorize />
     </div>
   );
 };
