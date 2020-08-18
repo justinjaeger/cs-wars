@@ -32,13 +32,15 @@
     "concurrently": "^5.3.0",
     "express": "^4.17.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+    "file-loader": "^6.0.0",
+>>>>>>> 663dace86e8e559218266c7cc1c43d4bd699fe83
     "node-fetch": "^2.6.0",
 >>>>>>> aaff39a63fa6d73134b43e7058681bbef46e04d0
     "pg": "^8.3.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
-    "redux": "^4.0.5"
+    "react-dom": "^16.13.1"
   }
 }

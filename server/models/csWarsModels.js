@@ -8,16 +8,9 @@ const pool = new Pool({
   connectionLimit: 300,
 });
 
-// ========= DATABASE INFO ========= //
-// TABLE: "users"
-// COLUMNS: "firstName", "lastName", "cwUsername"
-
-module.exports = { // when we make a request to pool.query, now it listens for params (string, params, callback)
-  query: (string, params, callback) => {
+module.exports = {
+  query: (text, params, callback) => {
     console.log('executed query', text);
     return pool.query(string, params, callback);
   },
 };
-
-// resources:
-// https://node-postgres.com/features/connecting#Connection%20URI
