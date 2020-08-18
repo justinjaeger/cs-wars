@@ -15,7 +15,7 @@ userController.getUser = async (req, res, next) => {
 
     next();
   } catch(err) { next(err) }
-
+};
 /*
   =========== NOTE: =========
   You can find the SQL database structure in the assets folder. 
