@@ -3,6 +3,7 @@ const { Pool } = require('pg');
 const PG_URI =
   'postgres://foowmfyb:Ssw_QCFOIUcqxn4MItAMAvy5OFiaviip@rajje.db.elephantsql.com:5432/foowmfyb';
 
+<<<<<<< HEAD
   const pool = new Pool({
     connectionString: PG_URI,
     connectionLimit: 300,
@@ -22,3 +23,16 @@ const PG_URI =
   // resources:
   // https://node-postgres.com/features/connecting#Connection%20URI
   
+=======
+const pool = new Pool({
+  connectionString: PG_URI,
+  connectionLimit: 300,
+});
+
+module.exports = {
+  query: (text, params, callback) => {
+    console.log('executed query', text);
+    return pool.query(string, params, callback);
+  },
+};
+>>>>>>> master

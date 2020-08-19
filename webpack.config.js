@@ -2,10 +2,10 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+// NPM RUN DEV TO RUN IT ON LOCAL 8080
+
 module.exports = {
-  entry: [
-    './client/index.js',
-  ],
+  entry: ['./client/index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
@@ -14,6 +14,7 @@ module.exports = {
   devtool: 'eval-source-map',
   mode: process.env.NODE_ENV,
   devServer: {
+    https: true,
     host: 'localhost',
     port: 8080,
     contentBase: path.resolve(__dirname, 'dist'),
@@ -24,7 +25,7 @@ module.exports = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
       '/': {
-        target: 'http://localhost:3000/',
+        target: 'https://localhost:3001/',
         secure: false,
       },
     },
@@ -37,11 +38,23 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
+        // query: {
+        //   presents: ['@babel/env', '@babel/react'],
+        //   plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+        // },
       },
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
       },
     ],
   },

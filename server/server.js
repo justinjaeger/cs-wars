@@ -1,16 +1,30 @@
+var fs = require('fs')
+var https = require('https')
+
 const express = require('express');
 const app = express();
+<<<<<<< HEAD
 
+=======
+const bodyParser = require('body-parser');
+>>>>>>> master
 const PORT = 3001;
 const path = require('path');
+
 // Require Routers:
 const userRouter = require('./routes/userRouter');
+
+// >> used to make a httpS server (for FB API)
+var certOptions = { 
+  key: fs.readFileSync(path.resolve(__dirname, '../server.key')),
+  cert: fs.readFileSync(path.resolve(__dirname, '../server.crt'))
+}
 
 // handle parsing request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// When starting from "production"
+// When starting server from "production" dev server
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, '../dist'))); // statically serve everything in the dist folder
   app.get('/', (req, res) => {
@@ -18,8 +32,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// ROUTERS
+// ======= MAIN ROUTER ========== //
 app.use('/', userRouter);
+// ====== ^MAIN ROUTER^ ========= //
 
 // catch-all route handler for req to unknown routes
 app.use((req, res) => {
@@ -38,8 +53,7 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
-});
+// listening; notice this is modified for https
+https.createServer(certOptions, app).listen(PORT, () => { console.log(`Listening on port ${PORT}...`); })
 
 module.exports = app;
