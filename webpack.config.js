@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// NPM RUN DEV TO RUN IT ON LOCAL 8080
-
 module.exports = {
   entry: ['./client/index.js'],
   output: {
@@ -25,7 +23,7 @@ module.exports = {
     headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
       '/': {
-        target: 'https://localhost:3001/',
+        target: 'https://localhost:3000/',
         secure: false,
       },
     },
@@ -38,10 +36,6 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-        // query: {
-        //   presents: ['@babel/env', '@babel/react'],
-        //   plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
-        // },
       },
       {
         test: /.(css|scss)$/,
