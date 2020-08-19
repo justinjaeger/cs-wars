@@ -1,17 +1,15 @@
 import React from 'react';
-import { configure, shallow, mount } from 'enzyme';
+import { configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ReactDOM from 'react-dom';
-// import toJson from 'enzyme-to-json';
+import toJson from 'enzyme-to-json';
 // allows us to test this file:
-import AddSearchEvent from '../client/components/AddSearchEvent.jsx';
+import LoginContainer from '../client/containers/LoginContainer.js';
+
+// something I'm not importing for jest to be able to parse it as a div... json? not equipped to read the image? jest not reading images
+// maybe just comment out all the images
+//
 
 configure({ adapter: new Adapter() });
-
-// it('renders a div', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<AddSearchEvent />, div);
-// });
 
 describe('React tests', () => {
   describe('AddSearchEvent', () => {
@@ -22,13 +20,15 @@ describe('React tests', () => {
     };
 
     beforeAll(() => {
-      wrapper = shallow(<AddSearchEvent {...props} />);
+      wrapper = shallow(<LoginContainer {...props} />);
     });
 
-    it('renders a div with the classname myCol', () => {
+    // put a json thing around wrapper?
+    it('renders a div', () => {
       expect(wrapper.type()).toEqual('div');
       // expect(wrapper.find('div').hasClass('myCol')).toEqual(true);
     });
   });
 });
  
+//https://www.npmjs.com/package/enzyme-to-json
