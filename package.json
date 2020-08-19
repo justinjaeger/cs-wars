@@ -7,34 +7,20 @@
     "start": "NODE_ENV=production nodemon server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "concurrently \"NODE_ENV=development\" \"webpack-dev-server --open --hot\" \"nodemon server/server.js\"",
-    "test": "jest --verbose"
-  },
-  "jest": {
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.11.1",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-syntax-jsx": "^7.10.4",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
-    "@babel/runtime": "^7.1.2",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
     "css-loader": "^4.2.1",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.3",
-    "enzyme-to-json": "^3.5.0",
     "html-webpack-plugin": "^4.3.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
-    "jest-puppeteer": "^3.4.0",
     "nodemon": "^2.0.4",
     "react-router-dom": "^5.2.0",
     "style-loader": "^1.2.1",
@@ -43,8 +29,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/plugin-transform-async-to-generator": "^7.1.0",
-    "babel": "^6.23.0",
     "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
